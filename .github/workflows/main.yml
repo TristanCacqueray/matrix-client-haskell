@@ -28,9 +28,10 @@ jobs:
           ${{ runner.os }}-${{ matrix.ghc }}-
           ${{ runner.os }}-
     - run: cabal update
-    - run: cabal build --enable-tests --flags=ci
-    - run: cabal test --enable-tests --flags=ci --test-show-details=direct
-    - run: cabal haddock
-    - run: cabal sdist
-    - run: cabal check
-    - run: cabal install --installdir=/tmp --overwrite-policy=always
+    - run: cabal build --enable-tests --flags=ci all
+    - run: cabal test --enable-tests --flags=ci --test-show-details=direct all
+    - run: cabal haddock all
+    - run: cabal sdist all
+    - run: cd matrix-client; cabal check
+#    - run: cd matrix-bot; cabal check
+    - run: cabal install --installdir=/tmp --overwrite-policy=always --lib all
