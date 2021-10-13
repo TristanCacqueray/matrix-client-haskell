@@ -654,4 +654,4 @@ instance ToJSON SyncResultRoom where
   toJSON = genericToJSON aesonOptions
 
 instance FromJSON SyncResultRoom where
-  parseJSON = genericParseJSON aesonOptions
+  parseJSON = genericParseJSON aesonOptions 42
